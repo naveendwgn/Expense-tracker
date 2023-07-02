@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
+import { collection, addDoc } from "firebase/firestore"; 
 
 export default function Home() {
   const [expenses, setExpenses] = useState([
@@ -7,8 +8,15 @@ export default function Home() {
     { name: 'Gas', amount: 50 },
     { name: 'Dinner', amount: 200 },
   ]);
-
+  const [newItem, setNewItem] = useState({ name: '', amount: '' });
   const [total, setTotal] = useState(0);
+
+  const addExpense = async (e) => {
+    e.preventDefault();
+    if (newItem.name !== '' && newItem.amount !== '') {
+      setExpenses([...expenses, newItem])
+    }
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between sm:p-24 p-4">
@@ -21,16 +29,21 @@ export default function Home() {
           className='grid grid-cols-6 items-center text-black'
           >
             <input 
+            value={newItem.name}
+            onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
             className='col-span-3 p-3 border' 
             type="text" 
             placeholder='Enter item' 
             />
             <input 
+            value={newItem.amount}
+            onChange={(e) => setNewItem({ ...newItem, amount: e.target.value })}
             className='col-span-2 p-3 border mx-3' 
             type="text" 
             placeholder='Enter $' 
             />
             <button 
+            onClick={addExpense}
             className='text-white bg-slate-950 hover:bg-slate-900 p-3 text-xl'
             type='submit'
             >
