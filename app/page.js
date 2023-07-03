@@ -50,7 +50,18 @@ export default function Home() {
       };
 
 
-  return (
+  return (<>
+  <div>
+    <nav className="flex items-center justify-between flex-wrap bg-[#10101066] p-2">
+      <a href="/"
+      className='text-xl font-mono p-4 text-center'
+      >Expense Trackr</a>
+      <a
+      className='text-white hover:text-[#53d2b4c3]'
+      href="https://github.com/naveendwgn/Expense-tracker"
+      >Source Code</a>
+    </nav>
+  </div>
     <main className="flex min-h-screen flex-col items-center justify-between sm:p-24 p-4">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm">
         <h1
@@ -114,5 +125,6 @@ export default function Home() {
       </footer>
       </>
     </main>
+    </>
   )
 }
