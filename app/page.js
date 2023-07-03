@@ -106,6 +106,13 @@ export default function Home() {
           )}
         </div>
       </div>
+      <>
+      <footer>
+        <div className='flex justify-center items-center'>
+          <p className='text-center text-white'>Made with ❤️ by <a className='text-[#7affce]' href='https://github.com/naveendwgn'>Naveen Dewangan</a></p>
+        </div>
+      </footer>
+      </>
     </main>
   )
 }
